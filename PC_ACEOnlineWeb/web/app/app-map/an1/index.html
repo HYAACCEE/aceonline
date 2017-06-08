@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>地图Demo</title>
+  <link rel="stylesheet" type="text/css" href="common.css" />
+  <script src="http://res1.ans-original.com/shared_js/jquery-1.11.3.min.js?_v=9"></script>
+  
+</head>
+
+
+
+<script>
+//ajax
+function ajax(url, data, sfun){
+    $.ajax({ type: "POST",
+             url: url,
+             data: data,
+             success: function(html, textStatus, XMLHttpRequest){
+               if(sfun) sfun(html);
+             }
+    });
+}
+
+function Map($container_) {
+
+  this.$map_ = $container_;
+}
+
+
+Map.TILE_SIZE = 256;
+
+
+Map.prototype.show = function(){
+  
+  this.$map_.html('');
+  
+  var tiles = [
+    ['2352.jpg', '2353.jpg', '2354.jpg', '2355.jpg'],
+    ['2356.jpg', '2357.jpg', '2358.jpg', '2359.jpg'],
+  ]
+  
+  for (var i = 0; i < tiles.length; i++) {
+    for (var j = 0; j < tiles[0].length; j++) {
+      var y = i * Map.TILE_SIZE;
+      var x = j * Map.TILE_SIZE;
+      
+      $tile = $('<img>');
+      $tile.attr('src', 'tiles/' + tiles[i][j]);
+      $tile.addClass('map-tile');
+      $tile.css({'left': x + 'px', 'top': y + 'px'});
+      
+      this.$map_.append($tile);
+    }
+  }
+}
+
+
+Map.prototype.showMarker = function(markers) {
+
+  for (var i = 0; i < markers.length; i++) {
+    var $marker = $('<img class="marker" src="images/marker.png"' + ' title="' + markers[i].caption + '\n' + markers[i].caption + '">');
+    $marker.addClass('map-marker');
+    $marker.css({'left': markers[i].x + 'px', 'top': markers[i].y + 'px'});
+    
+    this.$map_.append($marker);
+  }
+}
+
+
+function Marker(caption, x, y) {
+  this.caption = caption;
+  this.x = x;
+  this.y = y;
+}
+
+Map.prototype.showOverlap = function(overlaps) {
+
+  for (var i = 0; i < overlaps.length; i++) {
+    var $overlap = $('<img class="overlap" src="'+overlaps[i].url+'">');
+    $overlap.addClass('map-overlap');
+    $overlap.css({'left': overlaps[i].x + 'px', 'top': overlaps[i].y + 'px'});
+    
+    this.$map_.append($overlap);
+  }
+}
+
+function Overlap(x, y, url) {
+  this.x = x;
+  this.y = y;
+  this.url = url;
+}
+
+</script>
+
+
+<body>
+
+<div class="map-container" id="mapContainer">
+</div>
+
+<script>
+  var map = new Map($('#mapContainer'));
+  map.show();
+  
+  var marker1 = new Marker('Test', 100, 100);
+  var marker2 = new Marker('Test', 300, 100);
+  var marker3 = new Marker('Test', 200, 200);
+  
+  map.showMarker([marker1, marker2, marker3]);
+  
+  ajax("../../biz/B_Map.y?cmd=overlap", {}, function(html){
+    var overlap1 = new Overlap(50, 50, html);
+    map.showOverlap([overlap1]);
+  });
+</script>
+
+</body>
+
+</html>

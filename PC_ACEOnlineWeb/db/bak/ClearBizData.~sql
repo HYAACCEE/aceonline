@@ -1,0 +1,15 @@
+111111111111111111111111111111111111111111111111
+delete from B_ACTION;
+delete from B_ACTION;
+delete from B_Candidate;
+delete from b_Candidate_Collect;
+delete from b_Candidate_Cvcertificate;
+delete from b_Candidate_Cveducation;
+delete from b_Candidate_Cvjob;
+delete from b_Candidate_Cvproject;
+delete from b_Candidate_Cvtrain;
+delete from B_Candidate_CVWork;
+delete from B_Candidate_Files;
+delete from b_Candidate_Hccomment;
+delete from B_Candidate_Process;
+delete from B_Candidate_Process_HIS;

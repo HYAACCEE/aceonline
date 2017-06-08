@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="PC_ACEOnlineWeb"
+  id="myeclipse.1478187540627"
+  context-root="/aceonline"
+  j2ee-spec="6.0"
+  archive="PC_ACEOnlineWeb.war">
+  <attributes>
+    <attribute name="webrootdir" value="web" />
+  </attributes>
+</project-module>
+

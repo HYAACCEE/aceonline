@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+<script type="text/javascript" src="jquery_corner.js"></script>
+<script type="text/javascript" src="fonc_utils.js"></script>
+<script type="text/javascript" src="jquery-ui-1.8.2.custom.min.js"></script>
+<link rel="stylesheet" type="text/css" href="jquery-ui-1.8.2.custom.css" />
+</head>
+<body>		
+<input type="text" name="start_date" id="start_date" size="10" maxlength="10" value="2011-03-01">
+	to
+<input type="text" name="end_date" id="end_date" size="10" maxlength="10" value="2011-03-30">
+	<script type="text/javascript">
+		$jq(function() { date_util($jq("#start_date")); date_util($jq("#end_date")); });
+  </script>
+</body>
+</html>

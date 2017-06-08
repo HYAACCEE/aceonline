@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<title>jQuery Vertical drop-down Menu </title>
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="menu_min.js"></script>
+<script type="text/javascript">
+$(document).ready(function (){  
+  $(".menu ul li").menu();  
+}); 
+</script> 
+<link rel="stylesheet" type="text/css" href="css/menu-css.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" /> 
+</head><body> 
+ 
+<h2>jQuery垂直下拉多级菜单</h2> 
+<h3></h3>
+<div id="content">
+<div class="menu">
+<ul>
+	<li><a class="active" href="#">Item 1</a>
+		<ul style="display: block;">
+			<li><a href="#sub1">Subitem 1</a></li>
+			<li><a href="#sub2">Subitem 2</a>
+				<ul>
+					<li><a href="#asdasdas">Subitem 1</a></li>
+					<li><a href="#nnnbbbbccb">Subitem 2</a></li>
+					<li><a href="#vvvccc">Subitem 3</a></li>
+					<li><a href="#bbbgvv">Subitem 4</a></li>
+				</ul>
+			</li>
+			<li><a href="#sub3">Subitem 3</a></li>
+			<li><a href="#sub4">Subitem 4</a>
+				<ul>
+					<li><a href="#asdasdas">Subitem 1</a></li>
+					<li><a href="#nnnbbbbccb">Subitem 2</a></li>
+				</ul>
+			</li>
+			<li><a href="#sub5">Subitem 5</a></li> 
+		</ul>				
+	</li>
+	<li><a href="#">Item 2</a>
+		<ul>
+			<li><a href="#subb1">Subitem 1</a></li>
+			<li><a href="#subb2">Subitem 2</a></li>
+			<li><a href="#subb3">Subitem 3</a></li>
+			<li><a href="#subb4">Subitem 4</a></li>
+		</ul>				
+	</li>
+	<li><a href="#">Item 3</a>
+		<ul>
+			<li><a href="#">Subitem 1</a></li>
+			<li><a href="#">Subitem 2</a></li>
+			<li><a href="#">Subitem 3</a></li>
+			<li><a href="#">Subitem 4</a></li>
+			<li><a href="#">Subitem 5</a></li>
+			<li><a href="#">Subitem 6</a></li>
+		</ul>				
+	</li>
+	<li><a href="#">Item without subitems</a></li>
+	<li><a href="#">Item without subitems</a></li>
+</ul>
+</div>
+</div>
+<br/><br/>
+<p align="center">适用浏览器：IE8、360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗. </p><br/>
+<p align="center">来源：<a href="http://sc.chinaz.com/" target="_blank">站长素材</a></p>
+</body></html>

@@ -1,0 +1,22 @@
+create or replace function F_Candidate_MyWork(cid in varchar2) return varchar2 is
+  Result varchar2(500);
+  v_tmp  varchar2(100);
+  v_key  varchar2(50);
+begin
+  Result := '';
+  DECLARE CURSOR v_rs IS select c5||'|'||c9 from B_Candidate_CVWork where c1=cid order by c3 desc;
+  begin
+    open v_rs;
+    LOOP
+      FETCH v_rs INTO v_tmp;
+      exit when v_rs%notfound;
+      if length(v_key)>0 then
+        Result := ',' || Result || v_tmp;
+      end if;
+    END LOOP;
+    close v_rs;
+  end;
+  if length(Result)>0 then Result := substr(Result,2); end if;
+  return(Result);
+end F_Candidate_MyWork;
+/

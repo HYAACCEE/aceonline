@@ -1,0 +1,64 @@
+百度离线地图开发顺序
+
+1.在网上下载别人写好的离线demo
+
+2.找到js文件夹
+
+3.在文件夹中的apvi1.3.min.js/apvi2.0.js中,搜索 getTilesUrl ,直到找到类似
+	aU.getTilesUrl = function(cN, cQ) {
+		//cQ = z z/x/y 表示瓦片(地图碎片的文件的存储方式)
+		var x = cN.x;
+		var y = cN.y;
+		var T = "20150518";
+		var cP = "pl";
+		if (this.map.highResolutionEnabled()) {
+			cP = "ph"
+		}
+		return "tiles/"+cQ+"/"+x+"/"+y+".png";
+		或
+		Uc.getTilesUrl=function(a,b,c){var x=a.x,y=a.y,e=1,z=b;return "tiles/"+z+"/"+x+"/"+y+".png";}
+		将return 后的语句直接改成本地的文件夹
+		tiles/  ：本地放图片的文件夹
+		z/x/y 地图瓦片数据的存储方式,这里的存储方式一定要对应下载回来的图片的存储方式,否则将无法显示地图
+		
+4.在js/getmodules.js 中,这个文件写的是百度地图的离线api的支持,如控件,覆盖物等方法的支持
+	//http://api.map.baidu.com/getmodules?v=1.3&mod=infowindow  api 获取地址
+	v= 表示的版本号
+	mod = 所要获取的api方法的名字,有时候是缩写,有时候是前缀,这个要一个一个试
+
+水经注万能地图下载器使用方法
+
+1.下载水经注万能电子地图下载器
+
+2.http://bbs.rivermap.cn/thread-25872-1-1.html  在上面注册个会员,免费使用七天,下载无水印的地图瓦片数据
+
+3.在线地图,选择电子-》电子.百度
+
+4.点击多边形下载,框选出所要下载的区域
+
+5.在我的下载中,选择下载好的任务,点击导出拼接图片,在导出类型中选择 瓦片.百度 
+	
+
+6.确定导出即可
+
+5.将导出的文件夹放入项目的tiles的文件夹即可
+
+感谢以下这些人分享的资料
+使用资料
+
+1.http://my.oschina.net/smzd/blog/528521  Web版百度地图加载离线瓦片
+
+2.http://www.oschina.net/code/snippet_84328_52038 百度地图1.3 demo 下载(IE 8 支持)
+
+3.http://www.oschina.net/code/snippet_84328_53024  百度地图2.0.2 demo 下载(IE 9 以上支持)
+
+4.http://www.arceyes.com/bbs/thread-26078-1-1.html 水经注导出百度瓦片数据
+
+5.http://bbs.arceyes.com/thread-25154-1-1.html 水经注瓦片自定义的解释
+
+
+下载地图等级划分
+
+	世界1-4级，中国4-7级，城市8-17级。
+	
+	水经注地图下载出来的瓦片数据默认存储方式是z/x/y

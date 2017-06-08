@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC 
+    "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" 
+    "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+
+  <form-beans>
+    <form-bean name="S_MainBean" type="com.svv.dms.web.service.system.S_MainBean"/>
+    <form-bean name="LoginBean" type="com.svv.dms.web.service.system.LoginBean"/>
+    <form-bean name="S_UserBean" type="com.svv.dms.web.service.system.S_UserBean"/>
+    <form-bean name="S_RoleBean" type="com.svv.dms.web.service.system.S_RoleBean"/>
+    <form-bean name="S_ModuleBean" type="com.svv.dms.web.service.system.S_ModuleBean"/>
+    <form-bean name="S_LogBean" type="com.svv.dms.web.service.system.S_LogBean"/>
+    <form-bean name="S_ParamBean" type="com.svv.dms.web.service.system.S_ParamBean"/>
+    <form-bean name="S_QuickMenuBean" type="com.svv.dms.web.service.system.S_QuickMenuBean"/>
+    <form-bean name="UploadifyBean" type="com.svv.dms.web.service.system.UploadifyBean"/>
+    <form-bean name="S_PerformanceQueryBean" type="com.svv.dms.web.service.system.S_PerformanceQueryBean"/>
+    <form-bean name="S_ServiceStatBean" type="com.svv.dms.web.service.system.S_ServiceStatBean"/>
+
+    <form-bean name="S_MonitorBean" type="com.svv.dms.web.service.system.S_MonitorBean"/>
+    <form-bean name="S_PlatFormBean" type="com.svv.dms.web.service.system.S_PlatFormBean"/>
+
+    <form-bean name="I_AreaBean" type="com.svv.dms.web.service.admin.I_AreaBean"/>
+    <form-bean name="I_BulletinBean" type="com.svv.dms.web.service.admin.I_BulletinBean"/>    
+    <form-bean name="I_NewsBean" type="com.svv.dms.web.service.admin.I_NewsBean"/>
+    <form-bean name="I_SystemParamBean" type="com.svv.dms.web.service.admin.I_SystemParamBean"/>
+    <form-bean name="I_OrganBean" type="com.svv.dms.web.service.admin.I_OrganBean"/>
+    <form-bean name="I_EmpBean" type="com.svv.dms.web.service.admin.I_EmpBean"/>
+    <form-bean name="I_MessageBean" type="com.svv.dms.web.service.admin.I_MessageBean"/>
+    <form-bean name="I_DataParamTypeBean" type="com.svv.dms.web.service.admin.I_DataParamTypeBean"/>
+    <form-bean name="I_DataTableBean" type="com.svv.dms.web.service.admin.I_DataTableBean"/>
+    <form-bean name="I_DataModuleBean" type="com.svv.dms.web.service.admin.I_DataModuleBean"/>
+    <form-bean name="I_DataTableTypeBean" type="com.svv.dms.web.service.admin.I_DataTableTypeBean"/>
+    <form-bean name="I_DataTableColumnExtInfoBean" type="com.svv.dms.web.service.admin.I_DataTableColumnExtInfoBean"/>
+    <form-bean name="I_ProcessBean" type="com.svv.dms.web.service.admin.I_ProcessBean"/>
+    <form-bean name="I_ProcessDescBean" type="com.svv.dms.web.service.admin.I_ProcessDescBean"/>    
+    <form-bean name="IB_ProcessBean" type="com.svv.dms.web.service.biz.IB_ProcessBean"/>
+    <form-bean name="XMLUpload" type="com.svv.dms.web.upload000.XMLUpload"/>
+    
+    <form-bean name="B_DataBean" type="com.svv.dms.web.service.biz.B_DataBean"/>
+    <form-bean name="B_DataDownloadBean" type="com.svv.dms.web.service.biz.B_DataDownloadBean"/>
+    <form-bean name="B_DataAddsBean" type="com.svv.dms.web.service.biz.B_DataAddsBean"/>
+    <form-bean name="B_DataAttachFileBean" type="com.svv.dms.web.service.biz.B_DataAttachFileBean"/>
+    <form-bean name="B_DataResourceBean" type="com.svv.dms.web.service.biz.B_DataResourceBean"/>
+    <form-bean name="B_DataChildBean" type="com.svv.dms.web.service.biz.B_DataChildBean"/>
+    <form-bean name="B_DataHisBean" type="com.svv.dms.web.service.biz.B_DataHisBean"/>
+    <form-bean name="XMLSelectDataBean" type="com.svv.dms.web.service.biz.XMLSelectDataBean"/>
+    <form-bean name="XMLTreeDataBean" type="com.svv.dms.web.service.biz.XMLTreeDataBean"/>
+    <form-bean name="B_DataPublicBean" type="com.svv.dms.web.service.biz.B_DataPublicBean"/>
+    <form-bean name="B_DataModuleBean" type="com.svv.dms.web.service.biz.B_DataModuleBean"/>
+    <form-bean name="B_DataPublicCmtBean" type="com.svv.dms.web.service.biz.B_DataPublicCmtBean"/>
+    <form-bean name="B_FormationBean" type="com.svv.dms.web.service.biz.B_FormationBean"/>      
+    
+    <form-bean name="B_ManagerBean" type="com.svv.dms.web.service.manager.B_ManagerBean"/>
+    <form-bean name="I_EmpBean" type="com.svv.dms.web.service.biz.I_EmpBean"/>
+    
+  </form-beans>
+
+  <global-exceptions>
+    <exception key="errors.general" type="java.lang.Exception" path="/common/Error.jsp"/>
+  </global-exceptions>
+
+  <global-forwards>
+    <forward name="index" path="/adminindex.jsp"/>
+    <forward name="error" path="/common/Error.jsp"/>
+    <forward name="messagePage" path="/common/CommonMessageP.jsp"/>
+    <forward name="list" path="/common/CommonListFlash.jsp" />
+    <forward name="treelist" path="/common/CommonTreeListFlash.jsp" />
+    <forward name="message" path="/common/CommonMessageFlash.jsp"/>
+    <forward name="xml" path="/common/CommonXMLFlash.jsp"/>
+    <forward name="poi" path="/common/CommonPoiFlash.jsp" />
+
+    <forward name="XMLDataList" path="/common/app-data/XMLDataList.jsp" />
+    <forward name="XMLDataChart" path="/common/app-data/XMLDataChart.jsp" />
+    <forward name="XMLSelectGoods" path="/app/app-biz/XMLSelectGoods.jsp" />
+  </global-forwards>
+
+  <action-mappings>
+    <action name="LoginBean" path="/index" scope="request" parameter="*" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/adminindex.jsp"/>
+    </action>
+    <action name="LoginBean" path="/adminindex" scope="request" parameter="*" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/adminindex.jsp"/>
+    </action>
+    <action name="LoginBean" path="/logout" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/adminindex.y"/>
+    </action>
+    <action name="LoginBean" path="/logon" attribute="LoginBean" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/common/login.jsp" />
+      <forward name="pswd" path="/S_Mpsd.y" />
+      <forward name="failure" path="/adminindex.y" />
+      <forward name="userfailure" path="/adminindex.y" />
+    </action>
+    <action name="LoginBean" path="/login" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/common/main.jsp" />
+      <forward name="usersuccess" path="/common/main.jsp" />
+    </action>
+    <action name="S_MainBean" path="/mainIndex" scope="request" parameter="*" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/common/mainIndex.jsp" />
+    </action>
+    <action name="S_MainBean" path="/Error" scope="request" parameter="*" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/common/Error.jsp" />
+    </action>
+    <action name="S_MainBean" path="/Message" scope="request" parameter="*" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/common/CommonMessage.jsp" />
+    </action>
+    <action name="S_MainBean" path="/system/Help" scope="request" parameter="*" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-system/Help.jsp" />
+    </action>
+    <action name="S_MainBean" path="/system/Version" scope="request" parameter="*" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-system/Version.jsp" />
+    </action>
+    <action name="S_MainBean" path="/Download" scope="request" parameter="*" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/common/CommonDownload.jsp" />
+    </action>
+    <action name="S_MainBean" path="/system/S_Main" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-system/S_Main.jsp"/>
+    </action>
+    <action name="S_MainBean" path="/biz/S_Main" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="XMLQrcodePage" path="/app/app-admin/XMLQrcodePage.jsp" />
+    </action>
+    <action name="S_MainBean" path="/xml/S_Main" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="XMLSpecDataList" path="/common/app-data/XMLSpecDataList.jsp"/>
+      <forward name="B_GoodsQR_PrintPage" path="/app/app-biz/B_GoodsQR_PrintPage.jsp" />
+    </action>
+    <action name="S_MainBean" path="/system/TestSql" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-system/TestSql.jsp"/>
+    </action>
+    <action name="S_PerformanceQueryBean" path="/system/S_PerformanceQuery" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-system/S_PerformanceQuery.jsp"/>
+    </action>
+    <action name="S_MainBean" path="/xml/dialog" scope="request" parameter="*" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/common/XMLDialog.jsp"/>
+    </action>
+    <action name="S_MainBean" path="/xml/win" scope="request" parameter="*" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/common/XMLWin.jsp"/>
+    </action>
+    <action name="S_MainBean" path="/xml/qrcode" scope="request" parameter="*" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/common/XMLQRCode.jsp"/>
+    </action>
+    <action name="S_MainBean" path="/xml/test" scope="request" parameter="*" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-biz/test.jsp"/>
+    </action>
+    <action name="UploadifyBean" path="/util/upload" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/common/CommonMessage.jsp" />
+    </action>
+    
+    <action name="S_UserBean" path="/system/S_User" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-system/S_User/S_User.jsp"/>
+      <forward name="setPage" path="/app/app-system/S_User/S_UserSet.jsp"/>
+      <forward name="addPage" path="/app/app-system/S_User/S_UserManager.jsp"/>
+      <forward name="editPage" path="/app/app-system/S_User/S_UserManager.jsp"/>
+    </action>
+    <action name="S_UserBean" path="/system/S_UserStart" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-system/S_User/S_UserSet.jsp"/>
+    </action>
+    <action name="S_UserBean" path="/system/S_UserStop" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+    </action>
+    <action name="S_UserBean" path="/S_Mpsd" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-system/S_User/S_Mpsd.jsp" />
+      <forward name="index" path="/adminindex.y" />
+    </action>
+    
+    <action name="S_RoleBean" path="/system/S_Role" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-system/S_Role.jsp"/>
+      <forward name="set" path="/app/app-system/S_RoleModules.jsp"/>
+    </action>
+    
+    <action name="S_ModuleBean" path="/system/S_Module" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-system/S_Module.jsp"/>
+    </action>
+    <action name="S_QuickMenuBean" path="/system/S_QuickMenu" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-system/S_QuickMenu.jsp"/>
+    </action>
+    
+    <action name="S_LogBean" path="/system/S_Log" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-system/S_Log/S_Log.jsp"/>
+    </action>
+    <action name="S_LogBean" path="/system/S_LogQuery" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-system/S_Log/S_LogQuery.jsp"/>
+    </action>
+    <action name="S_LogBean" path="/system/M_LogQuery" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-system/S_Log/M_LogQuery.jsp"/>
+    </action>
+    <action name="S_LogBean" path="/system/B_LogQuery" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-system/S_Log/B_LogQuery.jsp"/>
+    </action>
+    <action name="S_LogBean" path="/system/T_LogQuery" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-system/S_Log/T_LogQuery.jsp"/>
+    </action>
+    <action name="S_LogBean" path="/system/S_LogForUser" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-system/S_Log/S_LogForUser.jsp"/>
+    </action>
+    <action name="S_LogBean" path="/system/S_LogForOrgan" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-system/S_Log/S_LogForOrgan.jsp"/>
+    </action>
+
+    <action name="S_ParamBean" path="/system/S_Param" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-system/S_Param.jsp"/>
+    </action>
+    <action name="S_ParamBean" path="/system/S_ParamSet" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-system/S_ParamSet.jsp" />
+    </action>
+    <action name="S_ParamBean" path="/system/S_ParamHelp" scope="request" parameter="*" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-system/S_ParamHelp.jsp" />
+    </action>
+      
+    <action name="S_PlatFormBean" path="/system/S_PlatForm" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-system/S_PlatForm.jsp"/>
+    </action>
+    <action name="S_PlatFormBean" path="/system/S_PlatFormMonitor" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-system/S_PlatFormMonitor.jsp"/>
+    </action>
+    
+    <action name="I_AreaBean" path="/biz/I_Area" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-admin/I_Area.jsp" />
+    </action>
+    <action name="I_BulletinBean" path="/biz/I_Bulletin" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-admin/I_Bulletin/I_Bulletin.jsp" />
+      <forward name="addPage" path="/app/app-admin/I_Bulletin/I_BulletinManager.jsp" />
+      <forward name="editPage" path="/app/app-admin/I_Bulletin/I_BulletinManager.jsp" />
+      <forward name="detail" path="/app/app-admin/I_Bulletin/I_BulletinDetail.jsp" />
+    </action>
+    <action name="I_SystemParamBean" path="/biz/I_SystemParam" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-admin/I_SystemParam.jsp" />
+    </action>
+    <action name="I_MessageBean" path="/biz/I_Message" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-admin/I_Message/I_MessageQueryByRecver.jsp" />
+      <forward name="sendPage" path="/app/app-admin/I_Message/I_MessageQueryBySender.jsp" />
+      <forward name="addPage" path="/app/app-admin/I_Message/I_MessageAdd.jsp"/>
+      <forward name="detail" path="/app/app-admin/I_Message/I_MessageDetail.jsp"/>
+    </action>
+
+    <action name="I_DataParamTypeBean" path="/biz/I_DataParamType" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-admin/I_DataParamType/I_DataParamType.jsp" />
+    </action>
+    <action name="I_DataParamTypeBean" path="/xml/XMLDataParamTypeTree" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-admin/I_DataParamType/XMLDataParamTypeTree.jsp"/>
+      <forward name="XMLDataList" path="/app/app-admin/I_DataParamType/XMLDataParamTypeList.jsp" />
+    </action>
+    <action name="I_DataParamTypeBean" path="/xml/XMLSelectDataParamType" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-admin/I_DataParamType/XMLSelectDataParamType.jsp"/>
+    </action>
+    <action name="I_DataTableBean" path="/biz/I_DataTable" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-admin/I_DataTable/I_DataTable.jsp" />
+      <forward name="addPage" path="/app/app-admin/I_DataTable/I_DataTableManager.jsp"/>
+      <forward name="editPage" path="/app/app-admin/I_DataTable/I_DataTableManager.jsp"/>
+      <forward name="detail" path="/app/app-admin/I_DataTable/I_DataTableDetail.jsp" />
+      <forward name="child" path="/app/app-admin/I_DataTable/I_DataTableChild.jsp" />
+      <forward name="XMLGetCols" path="/app/app-admin/I_DataTable/XMLGetCols.jsp" />
+      <forward name="XMLSelectTableCols" path="/app/app-admin/I_DataTable/XMLSelectTableCols.jsp" />
+      <forward name="dataModule" path="/app/app-admin/I_DataTable/I_DataModuleManager.jsp" />
+    </action>
+    <action name="I_DataTableBean" path="/xml/XMLDataTableTree" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-admin/I_DataTable/XMLDataTableTree.jsp"/>
+    </action>
+    <action name="I_DataModuleBean" path="/xml/I_DataModule" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="editPage" path="/app/app-admin/I_DataTable/I_DataModuleManager.jsp"/>
+    </action>
+    <action name="I_DataTableTypeBean" path="/biz/I_DataTableType" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-admin/I_DataTableType/I_DataTableType.jsp" />
+    </action>
+    <action name="I_DataTableColumnExtInfoBean" path="/biz/I_DataTableColumnExtInfo" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-admin/I_DataTableColumnExtInfo/I_DataTableColumnExtInfo.jsp" />
+      <forward name="addPage" path="/app/app-admin/I_DataTableColumnExtInfo/I_DataTableColumnExtInfoManager.jsp"/>
+      <forward name="editPage" path="/app/app-admin/I_DataTableColumnExtInfo/I_DataTableColumnExtInfoManager.jsp"/>
+      <forward name="detail" path="/app/app-admin/I_DataTableColumnExtInfo/I_DataTableColumnExtInfoDetail.jsp" />
+      <forward name="XMLValueScopeDefaultUserInfo" path="/app/app-admin/I_DataTableColumnExtInfo/XMLValueScopeDefaultUserInfo.jsp" />
+      <forward name="XMLValueScopeDefault" path="/app/app-admin/I_DataTableColumnExtInfo/XMLValueScopeDefault.jsp" />
+    </action>
+    
+    <action name="I_ProcessBean" path="/biz/I_Process" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-admin/I_Process/I_Process.jsp" />
+      <forward name="ppic" path="/app/app-admin/I_Process/I_ProcessPPIC.jsp" />
+      <forward name="formWord" path="/app/app-admin/I_Process/I_ProcessFormWord.jsp" />
+    </action>
+    <action name="I_ProcessDescBean" path="/biz/I_ProcessDesc" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-admin/I_Process/I_ProcessDesc.jsp" />
+      <forward name="cols" path="/app/app-admin/I_Process/I_ProcessDescCols.jsp" />
+      <forward name="conditions" path="/app/app-admin/I_Process/I_ProcessDescConditions.jsp" />
+    </action>
+    
+    <action name="IB_ProcessBean" path="/biz/IB_Process" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-admin/IB_Process/IB_Process.jsp" />
+      <forward name="editPage" path="/app/app-admin/IB_Process/IB_ProcessEdit.jsp" />
+      <forward name="detail" path="/app/app-admin/IB_Process/IB_ProcessDetail.jsp" />
+    </action>
+    <action name="IB_ProcessBean" path="/biz/IB_ProcessNew" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-admin/IB_Process/IB_ProcessIndex.jsp" />
+      <forward name="addPage" path="/app/app-admin/IB_Process/IB_ProcessNew.jsp" />
+      <forward name="addNext" path="/app/app-admin/IB_Process/IB_ProcessNewNext.jsp" />
+      <forward name="editPage" path="/app/app-admin/IB_Process/IB_ProcessEdit.jsp" />
+    </action>
+    <action name="IB_ProcessBean" path="/biz/IB_ProcessWait" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-admin/IB_Process/IB_ProcessWait.jsp" />
+      <forward name="editPage" path="/app/app-admin/IB_Process/IB_ProcessEdit.jsp" />
+      <forward name="detail" path="/app/app-admin/IB_Process/IB_ProcessDetail.jsp" />
+    </action>
+    <action name="XMLUpload" path="/xml/XMLUploadImage" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+    </action>
+    <action name="XMLUpload" path="/xml/XMLUploadFile" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+    </action>
+
+    <action name="B_DataBean" path="/biz/B_Data" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/common/app-data/B_Data/B_Data.jsp" />
+      <forward name="detail" path="/common/app-data/B_Data/B_DataDetail.jsp" />
+    </action>
+    <action name="B_DataBean" path="/biz/B_Data_add" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="addPage" path="/common/app-data/B_Data/B_DataManager.jsp"/>
+      <forward name="editPage" path="/common/app-data/B_Data/B_DataManager.jsp"/>
+    </action>
+    <action name="B_DataBean" path="/biz/B_Data_edit" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="editPage" path="/common/app-data/B_Data/B_DataManager.jsp"/>
+    </action>
+    <action name="B_DataPublicBean" path="/biz/B_DataPublic" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/common/app-data/B_DataPublic/B_DataPublic.jsp" />
+      <forward name="detail" path="/common/app-data/B_Data/B_DataDetail.jsp" />
+    </action>
+    <action name="B_DataBean" path="/biz/B_DataPublic_add" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="addPage" path="/common/app-data/B_Data/B_DataManager.jsp"/>
+      <forward name="editPage" path="/common/app-data/B_Data/B_DataManager.jsp"/>
+    </action>
+    <action name="B_DataBean" path="/biz/B_DataPublic_edit" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="editPage" path="/common/app-data/B_Data/B_DataManager.jsp"/>
+    </action>
+    <action name="B_DataHisBean" path="/biz/B_DataPublic_his" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/common/app-data/B_Data/XMLDataHis.jsp"/>
+    </action>
+    <action name="B_DataPublicCmtBean" path="/biz/B_DataPublic_cmt" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/common/app-data/B_DataPublic/B_DataPublicCmt.jsp" />
+    </action>
+    <action name="B_DataPublicBean" path="/biz/B_DataPublicQuery" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/common/app-data/B_DataPublic/B_DataPublicQuery.jsp" />
+      <forward name="detail" path="/common/app-data/B_DataPublic/B_DataDetail.jsp" />
+    </action>
+    <action name="B_DataModuleBean" path="/biz/B_DataModule" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/common/app-data/B_DataModule/B_DataModule.jsp" />
+      <forward name="detail" path="/common/app-data/B_DataModule/B_DataDetail.jsp" />
+    </action>
+
+    <action name="B_DataDownloadBean" path="/biz/B_DataDownload" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/common/app-data/B_DataDownload.jsp" />
+    </action>
+    <action name="B_DataAddsBean" path="/biz/B_DataAdds" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/common/app-data/B_DataAdds.jsp" />
+      <forward name="XMLDataAdds" path="/common/app-data/XMLDataAdds.jsp" />
+    </action>
+    <action name="B_DataBean" path="/biz/B_DataAdds_add" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="addPage" path="/common/app-data/B_Data/B_DataManager.jsp"/>
+      <forward name="editPage" path="/common/app-data/B_Data/B_DataManager.jsp"/>
+    </action>
+    <action name="B_DataBean" path="/biz/B_DataAdds_edit" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="editPage" path="/common/app-data/B_Data/B_DataManager.jsp"/>
+    </action>
+    
+    <action name="B_DataAttachFileBean" path="/xml/XMLDataAttachFile" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/common/app-data/B_Data/XMLDataAttachFile.jsp"/>
+    </action>
+    <action name="B_DataChildBean" path="/biz/B_DataPublicQueryChild" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/common/app-data/B_Data/XMLDataChild.jsp"/>
+    </action>
+    <action name="B_DataChildBean" path="/biz/B_DataPublicChild" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/common/app-data/B_Data/XMLDataChild.jsp"/>
+    </action>
+    <action name="B_DataBean" path="/biz/B_DataPublicChild_add" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="addPage" path="/common/app-data/B_Data/B_DataManager.jsp"/>
+      <forward name="editPage" path="/common/app-data/B_Data/B_DataManager.jsp"/>
+    </action>
+    <action name="B_DataBean" path="/biz/B_DataPublicChild_edit" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="editPage" path="/common/app-data/B_Data/B_DataManager.jsp"/>
+    </action>
+    <action name="B_DataHisBean" path="/biz/B_DataPublicChild_his" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/common/app-data/B_Data/XMLDataHis.jsp"/>
+    </action>
+    <action name="B_DataChildBean" path="/biz/B_ProcessChild" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/common/app-data/B_Data/XMLDataChild.jsp"/>
+    </action>
+    <action name="B_DataBean" path="/biz/B_ProcessChild_add" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="addPage" path="/common/app-data/B_Data/B_DataManager.jsp"/>
+      <forward name="editPage" path="/common/app-data/B_Data/B_DataManager.jsp"/>
+    </action>
+    <action name="B_DataBean" path="/biz/B_ProcessChild_edit" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="editPage" path="/common/app-data/B_Data/B_DataManager.jsp"/>
+    </action>
+
+    <action name="XMLSelectDataBean" path="/xml/XMLSelectData" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/common/app-data/B_Data/XMLSelectData.jsp"/>
+      <forward name="XMLShowDataFile" path="/common/app-data/B_Data/XMLShowDataFile.jsp"/>
+    </action>     
+    <action name="XMLTreeDataBean" path="/xml/XMLTreeData" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/common/app-data/B_Data/XMLTreeData.jsp"/>
+    </action>
+    
+    <action name="I_EmpBean" path="/biz/I_EmpInfo" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-biz/I_EmpInfo.jsp" />
+    </action>
+    <action name="B_ManagerBean" path="/biz/B_Manager" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/app/app-admin/B_Manager.jsp"/>
+    </action>
+    <action name="B_ManagerBean" path="/xml/B_Editor" scope="request" validate="false" type="com.jeesoon.struts.beanaction.AbstractAction">
+      <forward name="success" path="/doc/script/kindeditor-4.1.11/jsp/demo.jsp"/>
+      <forward name="upload_json" path="/doc/script/kindeditor-4.1.11/jsp/upload_json.jsp"/>
+      <forward name="file_manager_json" path="/doc/script/kindeditor-4.1.11/jsp/file_manager_json.jsp"/>
+    </action>
+ 
+  </action-mappings>
+
+</struts-config>

@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>地图Demo</title>
+  <link rel="stylesheet" type="text/css" href="common.css" />
+  <script src="http://res1.ans-original.com/shared_js/jquery-1.11.3.min.js?_v=9"></script>
+  
+</head>
+
+
+
+<script>
+
+function Map($container_) {
+  this.$map_ = $container_;
+  
+  // 存储当前Map左上角和右下角tile编号，以及zoom
+  this.viewport_ = {"x1": 0, "y1": 0, "x2": 0, "y2": 0, "zoom": 0};
+}
+
+
+Map.TILE_SIZE = 256;
+
+
+Map.prototype.latLng2Pixel = function(lon, lat, zoom) {
+  var x = (lon+180)/360*Math.pow(2,zoom);
+  var y = (1-Math.log(Math.tan(lat*Math.PI/180) + 1/Math.cos(lat*Math.PI/180))/Math.PI)/2 *Math.pow(2,zoom);
+  var tileX = Math.floor(x);
+  var tileY = Math.floor(y);
+  var pixelX = Math.floor((x - tileX) * Map.TILE_SIZE);
+  var pixelY = Math.floor((y - tileY) * Map.TILE_SIZE);
+  
+  return {"tileX":tileX, "tileY":tileY, "pixelX":pixelX, "pixelY":pixelY };
+}
+
+Map.prototype.unshow = function(){
+  this.$map_.html('');
+}
+
+Map.prototype.show = function(lon1, lat1, lon2, lat2, zoom){
+
+  // zoom 从0开始算，方便墨卡托变换
+  zoom = zoom - 1;
+  
+  // 左上角和右下角的tile坐标
+  var t1 = this.latLng2Pixel(lon1, lat1, zoom);
+  var t2 = this.latLng2Pixel(lon2, lat2, zoom);
+  
+  var len1 = t2.tileX - t1.tileX + 1;
+  var len2 = t2.tileY - t1.tileY + 1;
+  
+  // 生成tiles
+  this.$map_.html('');
+  for (var i = 0; i < len1; i++) {
+    for (var j = 0; j < len2; j++) {    
+      var filename = 'tiles/L' + zfill(zoom + 1, 2) + '/' + zfill(t1.tileY + j + 1, 6) + '-' + zfill(t1.tileX + i + 1, 6) + '.jpg';
+      var x = i * Map.TILE_SIZE;
+      var y = j * Map.TILE_SIZE;
+      
+      $tile = $('<img>');
+      $tile.attr('src', filename);
+      $tile.addClass('map-tile');
+      $tile.css({'left': x + 'px', 'top': y + 'px'});
+      
+      this.$map_.append($tile);
+    }
+  }
+  
+  // 更新viewport
+  this.viewport_.x1 = t1.tileX;
+  this.viewport_.y1 = t1.tileY;
+  this.viewport_.x2 = t2.tileX;
+  this.viewport_.y2 = t2.tileY;
+  this.viewport_.zoom = zoom;
+}
+
+
+Map.prototype.showMarker = function(lon, lat, txt) {
+  var m = this.latLng2Pixel(lon, lat, this.viewport_.zoom);
+  var x = (m.tileX - this.viewport_.x1) * Map.TILE_SIZE + m.pixelX - 16;
+  var y = (m.tileY - this.viewport_.y1) * Map.TILE_SIZE + m.pixelY - 32;
+
+  var $marker = $('<img class="marker" src="images/marker.png"' + ' onmouseover="showMarkerDesc('+x+','+y+',\''+txt+'\')" onmouseout="showMarkerDesc()">');
+  $marker.addClass('map-marker');
+  $marker.css({'left': x + 'px', 'top': y + 'px'});
+
+  this.$map_.append($marker);
+}
+
+Map.prototype.showOverlay = function(lon, lat, url) {
+  var m = this.latLng2Pixel(lon, lat, this.viewport_.zoom);
+  var x = (m.tileX - this.viewport_.x1) * Map.TILE_SIZE + m.pixelX - 64;
+  var y = (m.tileY - this.viewport_.y1) * Map.TILE_SIZE + m.pixelY - 64;
+
+  var $overlay = $('<img class="overlay" src="' + url + '">');
+  $overlay.addClass('map-overlay');
+  $overlay.css({'left': x + 'px', 'top': y + 'px'});
+  
+  this.$map_.append($overlay);
+}
+
+function showMarkerDesc(lon, lat, txt){
+  document.getElementById("remark").value = txt;
+  var $markerDesc = $('map-transbox');
+  if(lon){
+    $markerDesc.css({'left': x + 'px', 'top': y + 'px', 'display': 'block'});
+  }else{
+    $markerDesc.css({'display': 'none'});
+  }
+}
+
+function zfill(num, size) {
+  var s = "000000000000" + num;
+  return s.substr(s.length-size);
+}
+
+//ajax
+function ajax(url, data, sfun){
+    $.ajax({ type: "POST",
+             url: url,
+             data: data,
+             success: function(html, textStatus, XMLHttpRequest){
+               if(sfun) sfun(html);
+             }
+    });
+}
+</script>
+
+
+<body>
+<input type=text id="remark" size=60>
+<input type=checkbox onclick=ShowMap(this.checked)>显示地图&nbsp;&nbsp;&nbsp;&nbsp;
+<input type=checkbox onclick=ShowMapOverlay(this.checked)>显示覆盖层&nbsp;&nbsp;&nbsp;&nbsp;
+<input type=checkbox onclick=ShowMapMarker(this.checked)>显示标签&nbsp;&nbsp;&nbsp;&nbsp;
+<input type=checkbox onclick=ShowMapMarkerDesc(this.checked)>显示标签说明&nbsp;&nbsp;&nbsp;&nbsp;
+<div class="map-container" id="mapContainer"></div>
+
+<div class="map-transbox" style="display:none">
+<p>
+这是测试文字，对标签进行说明.<br>
+这是测试文字，对标签进行说明.<br>
+这是测试文字，对标签进行说明.<br>
+这是测试文字，对标签进行说明.<br>
+这是测试文字，对标签进行说明.<br>
+</p>
+</div>
+
+
+<script>
+var map;
+function ShowMap(v){
+  if(v){
+	  map = new Map($('#mapContainer'));
+	  map.show(139.020186779499, 45.898769855499, 139.032803890705, 45.894469070434, 17);
+  }else{
+    map.unshow();
+  }
+}
+function ShowMapMarker(v){ 
+  map.showMarker(139.026068625450, 45.896294307708, "天安门");
+  map.showMarker(139.026068625450, 45.896894307708, "故宫");
+  map.showMarker(139.025568625450, 45.896294307708, "天安门西");
+  map.showMarker(139.025068625450, 45.896294307708, "西单");
+  map.showMarker(139.022068625450, 45.895294307708, "复兴门");
+}
+    
+  ajax("../../../biz/B_Map.y?cmd=overlay", {}, function(html){
+    map.showOverlay(139.026068625450, 45.896294307708, html);
+    map.showOverlay(139.026068625450, 45.896894307708, html);
+    map.showOverlay(139.025568625450, 45.896294307708, html);
+    map.showOverlay(139.025068625450, 45.896294307708, html);
+    map.showOverlay(139.022068625450, 45.895294307708, html);
+  });
+</script>
+
+</body>
+
+</html>
